@@ -54,8 +54,9 @@ public:
             slow=slow->next;
             fast=fast->next->next;
         }
-        ListNode* head2=slow->next;
+        ListNode* head2=sortList(slow->next);
         slow->next=NULL;
-        return merge(sortList(head),sortList(head2));
+        head=sortList(head);
+        return merge(head2,head);
     }
 };
