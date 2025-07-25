@@ -16,15 +16,15 @@ public:
         ListNode* temp1=list1,*temp2=list2;
         while(temp1!=NULL && temp2!=NULL){
             if(temp1->val>temp2->val){
-                ListNode* x=new ListNode(temp2->val);
-                temp->next=x;
-                temp=x;
+                //ListNode* x=new ListNode(temp2->val);
+                temp->next=temp2;
+                temp=temp2;
                 temp2=temp2->next;
             }
             else{
-                ListNode* x=new ListNode(temp1->val);
-                temp->next=x;
-                temp=x;
+                //ListNode* x=new ListNode(temp1->val);
+                temp->next=temp1;
+                temp=temp1;
                 temp1=temp1->next;
             }
         }
