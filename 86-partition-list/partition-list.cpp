@@ -28,13 +28,8 @@ public:
                 th=th->next;
             }
         }
-        head1=head1->next;
-        head2=head2->next;
+        tl->next=head2->next;
         th->next=NULL;
-        tl->next=NULL;
-        tl->next=head2;
-        if(head1!=NULL)
-            return head1;
-        return head2;
+        return head1->next;
     }
 };
