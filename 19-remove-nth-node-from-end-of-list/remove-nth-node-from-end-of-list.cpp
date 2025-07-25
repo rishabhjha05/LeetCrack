@@ -22,11 +22,12 @@ public:
     }
     ListNode* removeNthFromEnd(ListNode* head, int n){
         int size=length(head),m=size-n;
-        if(size<=1) return NULL;
+        if(size==n) return head->next;
+
         ListNode* temp=head;
         for(int i=1;i<m;i++)
             temp=temp->next;
-        if(m==0) head=temp->next;
+    
         temp->next=temp->next->next;
         return head;
     }
