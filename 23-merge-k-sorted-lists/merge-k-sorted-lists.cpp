@@ -36,13 +36,12 @@ public:
             return NULL;
         while(lists.size()>1)
         {
-            ListNode* a=lists[lists.size()-1];
-            lists.pop_back();
-            ListNode* b=lists[lists.size()-1];
-            lists.pop_back();
+            ListNode* a=lists[0];
+            lists.erase(lists.begin());
+            ListNode* b=lists[0];
+            lists.erase(lists.begin());
             ListNode* c=merge(a,b);
             lists.push_back(c);
-            
         }
         return lists[0];
     }
