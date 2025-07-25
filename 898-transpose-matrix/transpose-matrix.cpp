@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> transpose(vector<vector<int>>& matrix) {
-        int i=0,j=0,r=matrix.size(),c=matrix[0].size();
+        int r=matrix.size(),c=matrix[0].size();
         vector<vector<int>> sol(c,vector<int>(r));
         for(int i=0;i<c;i++){
             for(int j=0;j<r;j++)
