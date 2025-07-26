@@ -10,13 +10,31 @@
  */
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head){
+    // ListNode* reverseList(ListNode* head){
+    //     if(head==NULL || head->next==NULL)
+    //         return head;
+    //     ListNode *newHead=reverseList(head->next);
+    //     head->next->next=head;
+    //     head->next=NULL;
+    //     return newHead;
+    // }
+    //for better time complexity in this code use another reverse list function
+    ListNode* reverseList(ListNode* head) {
         if(head==NULL || head->next==NULL)
             return head;
-        ListNode *newHead=reverseList(head->next);
-        head->next->next=head;
+        ListNode *prev=head;
+        ListNode *curr=head->next;
+        ListNode *Next=head->next->next;
+        while(Next!=NULL){
+            curr->next=prev;
+            prev=curr;
+            curr=Next;
+            Next=Next->next;
+        }
+        curr->next=prev;
         head->next=NULL;
-        return newHead;
+        head=curr;
+        return head;
     }
     bool isPalindrome(ListNode* head) {
         ListNode *head2=new ListNode(-1);
