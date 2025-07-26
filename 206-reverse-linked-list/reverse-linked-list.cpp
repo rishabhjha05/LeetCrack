@@ -10,12 +10,6 @@
  */
 class Solution {
 public:
-    ListNode* getNode(ListNode* head,int idx){
-        ListNode *temp=head;
-        for(int i=1;i<=idx;i++) 
-            temp=temp->next;
-        return temp;
-    }
     ListNode* reverseList(ListNode* head) {
         if(head==NULL || head->next==NULL)
             return head;
