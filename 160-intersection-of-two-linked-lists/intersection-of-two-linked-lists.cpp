@@ -17,30 +17,37 @@ public:
         }
         return size;
     }
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        int sizeA=length(headA),sizeB=length(headB);
-        if(sizeA>sizeB){
-            int n=sizeA-sizeB;
-            ListNode* tempA=headA,*tempB=headB;
-            for(int i=1;i<=n;i++)
-                tempA=tempA->next;
-            while(tempA!=tempB){
-                tempA=tempA->next;
-                tempB=tempB->next;
-            }
-            return tempA;
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+    {
+    int sizeA = length(headA), sizeB = length(headB);
+    if (sizeA > sizeB)
+    {
+        ListNode *tempA = headA, *tempB = headB;
+        int n = sizeA - sizeB;
+        for (int i = 1; i <= n; i++)
+            tempA = tempA->next;
+        while (tempA != tempB)
+        {
+            tempA = tempA->next;
+            tempB = tempB->next;
         }
-        else{
-            int n=sizeB-sizeA;
-            ListNode* tempA=headA,*tempB=headB;
-            for(int i=1;i<=n;i++)
-                tempB=tempB->next;
-            while(tempA!=tempB){
-                tempA=tempA->next;
-                tempB=tempB->next;
-            }
-            return tempA;
-        }
-        return headA;
+        return tempA;
     }
+    else
+    {
+
+        ListNode *tempA = headA, *tempB = headB;
+        int n = sizeB - sizeA;
+        for (int i = 1; i <= n; i++)
+            tempB = tempB->next;
+        while (tempA != tempB)
+        {
+            
+            tempA = tempA->next;
+            tempB = tempB->next;
+        }
+        return tempA;
+    }
+    return NULL;
+}
 };
