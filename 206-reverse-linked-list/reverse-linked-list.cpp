@@ -17,22 +17,20 @@ public:
         return temp;
     }
     ListNode* reverseList(ListNode* head) {
-        int size=0,i,j;
-        ListNode* temp=head;
-        while(temp)
-        {
-            size++;
-            temp=temp->next;
+        if(head==NULL || head->next==NULL)
+            return head;
+        ListNode *prev=head;
+        ListNode *curr=head->next;
+        ListNode *Next=head->next->next;
+        while(Next!=NULL){
+            curr->next=prev;
+            prev=curr;
+            curr=Next;
+            Next=Next->next;
         }
-        i=0,j=size-1;
-        while(i<j){
-            ListNode *left=getNode(head,i);
-            ListNode *right=getNode(head,j);
-            int t=left->val;
-            left->val=right->val;
-            right->val=t;
-            i++,j--;
-        }
+        curr->next=prev;
+        head->next=NULL;
+        head=curr;
         return head;
     }
 };
