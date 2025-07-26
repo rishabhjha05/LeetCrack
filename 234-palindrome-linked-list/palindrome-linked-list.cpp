@@ -37,21 +37,19 @@ public:
         return head;
     }
     bool isPalindrome(ListNode* head) {
-        ListNode *head2=new ListNode(-1);
-        ListNode *ctemp=head2;
-        ListNode *temp=head;
-        while(temp!=NULL){
-            ListNode *t=new ListNode(temp->val);
-            ctemp->next=t;
-            temp=temp->next;
-            ctemp=ctemp->next;
+        ListNode *slow=head;
+        ListNode *fast=head;
+        while(fast->next!=NULL && fast->next->next!=NULL){
+            fast=fast->next->next;
+            slow=slow->next;
         }
-        head2=head2->next;
-        ListNode *revHead=reverseList(head);
-        while(head2!=NULL){
-            if(head2->val!=revHead->val)
+        ListNode *head2=slow->next;
+        slow->next=NULL;
+        ListNode *revHead=reverseList(head2);
+        while(revHead!=NULL){
+            if(head->val!=revHead->val)
                 return false;
-            head2=head2->next;
+            head=head->next;
             revHead=revHead->next;
         }
         return true;
