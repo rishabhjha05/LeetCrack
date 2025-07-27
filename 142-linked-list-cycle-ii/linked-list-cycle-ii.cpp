@@ -9,26 +9,31 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-        ListNode* slow=head;
-        ListNode* fast=head;
-        bool found=false;
-        while(fast!=NULL && fast->next!=NULL){
-            slow=slow->next;
-            fast=fast->next->next;
-            if(slow==fast)  {
-            found=true;
-            break;
-            }
-        }
-        if(found)
+        
+    ListNode *slow = head;
+    ListNode *fast = head;
+    bool found = false;
+    while (fast != NULL && fast->next != NULL)
+    {
+        fast = fast->next->next;
+        slow = slow->next;
+        if (slow == fast)
         {
-            ListNode* temp=head;
-            while(temp!=slow){
-                temp=temp->next;
-                slow=slow->next;
-            }
-            return slow;
+            found = true;
+            break;
         }
-        return NULL;
+    }
+    if (found)
+    {
+        ListNode *temp = head;
+        while (temp != NULL)
+        {
+            if (temp == slow)
+                return temp;
+            temp = temp->next;
+            slow = slow->next;
+        }
+    }
+    return NULL;
     }
 };
