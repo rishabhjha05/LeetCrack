@@ -10,29 +10,42 @@
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* temp1, ListNode* temp2) {
-        ListNode* temp= new ListNode(-1);
-        ListNode* head=temp;
-        //ListNode* temp1=list1,*temp2=list2;
-        while(temp1!=NULL && temp2!=NULL){
-            if(temp1->val>temp2->val){
-                //ListNode* x=new ListNode(temp2->val);
-                temp->next=temp2;
-                temp=temp2;
-                temp2=temp2->next;
-            }
-            else{
-                //ListNode* x=new ListNode(temp1->val);
-                temp->next=temp1;
-                temp=temp1;
-                temp1=temp1->next;
-            }
-        }
-        if(temp1==NULL)
-            temp->next=temp2;
-        else
-            temp->next=temp1;
-        return head->next;
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         
+    ListNode *temp1 = list1;
+    ListNode *temp2 = list2;
+    ListNode *temp3 = new ListNode(-1);
+    ListNode *head = temp3;
+    while (temp1 && temp2)
+    {
+        if (temp1->val > temp2->val)
+        {
+            ListNode *Node = new ListNode(temp2->val);
+            temp3->next = Node;
+            temp2 = temp2->next;
+        }
+        else
+        {
+            ListNode *Node = new ListNode(temp1->val);
+            temp3->next = Node;
+            temp1 = temp1->next;
+        }
+        temp3 = temp3->next;
+    }
+    while (temp1)
+    {
+        ListNode *Node = new ListNode(temp1->val);
+        temp3->next = Node;
+        temp1 = temp1->next;
+        temp3 = temp3->next;
+    }
+    while (temp2)
+    {
+        ListNode *Node = new ListNode(temp2->val);
+        temp3->next = Node;
+        temp2 = temp2->next;
+        temp3 = temp3->next;
+    }
+    return head->next;
     }
 };
