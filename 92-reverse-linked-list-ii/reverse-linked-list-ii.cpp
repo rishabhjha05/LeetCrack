@@ -30,7 +30,7 @@ public:
 
     ListNode* reverseBetween(ListNode* head, int left, int right) {
         if(left==right || head->next==NULL) return head;
-        else if(head->next->next==NULL) return reverseList(head);
+        
         ListNode *a=NULL,*b=NULL,*c=NULL,*d=NULL;
         ListNode *temp=head;
         int n=1;
