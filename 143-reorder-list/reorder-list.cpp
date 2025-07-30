@@ -10,48 +10,47 @@
  */
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
-        if(head==NULL || head->next==NULL)
-            return head;
-        ListNode *prev=head;
-        ListNode *curr=head->next;
-        ListNode *Next=head->next->next;
-        while(Next!=NULL){
-            curr->next=prev;
-            prev=curr;
-            curr=Next;
-            Next=Next->next;
-        }
-        curr->next=prev;
-        head->next=NULL;
-        head=curr;
+ListNode *reverseList(ListNode *head)
+{
+    if (head == NULL || head->next == NULL)
         return head;
+    ListNode *prev = head, *curr = prev->next, *Next = curr->next;
+    while (Next)
+    {
+        curr->next = prev;
+        prev = curr;
+        curr = Next;
+        Next = Next->next;
     }
-    void reorderList(ListNode* head) {
-        ListNode *slow=head;
-        ListNode *fast=head;
-        ListNode *p2;
-        while(fast->next!=NULL && fast->next->next!=NULL)
-        {
-            slow=slow->next;
-            fast=fast->next->next;
-        }
-        p2=slow->next;
-        slow->next=NULL;
-        ListNode* ta=head;
-        ListNode* tb=reverseList(p2);
-        ListNode* head2=new ListNode(-1);
-        ListNode* temp=head2;
-        while(ta!=NULL)
-        {
-            temp->next=ta;
-            ta=ta->next;
-            temp=temp->next;
-            temp->next=tb;
-            temp=temp->next;
-            if(tb!=NULL)
-                tb=tb->next;
-        }
-        head=head2->next;
+    curr->next = prev;
+    head->next = NULL;
+    head = curr;
+    return head;
+}
+ListNode *reorderList(ListNode *head)
+{
+    ListNode *slow = head, *fast = head;
+    while (fast->next && fast->next->next)
+    {
+        fast = fast->next->next;
+        slow = slow->next;
     }
+    ListNode *head2 = slow->next;
+    slow->next = NULL;
+    head2 = reverseList(head2);
+    ListNode *temp1 = head, *temp2 = head2;
+    ListNode *head3 = new ListNode(-1), *temp = head3;
+    while (temp1)
+    {
+        temp->next = temp1;
+        temp1 = temp1->next;
+        temp = temp->next;
+        temp->next = temp2;
+        if (temp2 == NULL)
+            break;
+        temp2 = temp2->next;
+        temp = temp->next;
+    }
+    return head3->next;
+}
 };
