@@ -1,0 +1,1 @@
+<h2>remove-all-adjacent-duplicates-in-string Notes</h2><hr>[ Time taken: 2 hrs 1 m 41 s ]
