@@ -1,19 +1,15 @@
 class Solution {
 public:
     int minSensors(int n, int m, int k) {
-        int x=k+1,a=1,b=1;
-        while(x<n-k)
-        {
-            x+=(2*k)+1;
+        int a=1,b=1;
+        a=n/((2*k)+1);
+        if(n%(2*k+1) != 0)
             a++;
-        }
-        x=k+1;
-        while(x<m-k)
-        {
-            x+=(2*k)+1;
+        b=m/((2*k)+1);
+        if(m%(2*k+1) != 0)
             b++;
-        }
-        return a*b;
-
+        if(a*b)
+            return a*b;
+        return 1;
     }
 };
