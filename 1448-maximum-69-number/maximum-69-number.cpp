@@ -6,21 +6,20 @@ public:
             vec.push_back(num%10);
             num/=10;
         }
-        reverse(vec.begin(),vec.end());
-        int i=0;
-        while(i<vec.size()){
+        int i=vec.size()-1;
+        while(i>=0){
             if(vec[i]==6){
                 vec[i]=9;
                 break;
             }
-            i++;
+            i--;
         }
         num=0;
-        i=0;
-        while(i<vec.size())
+        i=vec.size()-1;
+        while(i>=0)
         {
             num*=10;
-            num+=vec[i++];
+            num+=vec[i--];
         }
         return num;
     }
