@@ -11,33 +11,19 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        vector<int> vec,vec2;
-        ListNode* temp=head;
-        while(temp){
-            vec.push_back(temp->val);
-            temp=temp->next;
-        }
-        int i=0;
-        while(i<vec.size()){
-            int j=i+1;
-            while(j<vec.size() && vec[j]==vec[i])
-                j++;
-            if(j!=i+1)
-                i=j;
+        ListNode* dummy=new ListNode(-1);
+        dummy->next=head;
+        ListNode* prev=dummy,*curr=head;
+        while(curr){
+            if(curr->next && curr->val==curr->next->val){
+                while(curr->next && curr->val==curr->next->val)
+                    curr=curr->next;
+                prev->next=curr->next;
+            }
             else
-                vec2.push_back(vec[i++]);
+                prev=prev->next;
+            curr=curr->next;
         }
-        for(int ele: vec2)
-            cout<<ele<<" ";
-        ListNode* head2=new ListNode(-1);
-        temp=head2,i=0;
-        while(i<vec2.size())
-        {
-            ListNode* node=new ListNode(vec2[i]);
-            temp->next=node;
-            temp=node;
-            i++;
-        }
-        return head2->next;
+        return dummy->next;
     }
 };
