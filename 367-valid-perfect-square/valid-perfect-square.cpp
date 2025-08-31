@@ -1,13 +1,20 @@
 class Solution {
 public:
     bool isPerfectSquare(int num) {
-        if(num==100000001)
-            return false;
-        float f=sqrt(num);
-        int i=(int)sqrt(num);
-        cout<<i<<" "<<f;
-        if(f-i==0)
-            return true;
-        return false;
+        bool found=false;
+        int i=0,j=num;
+        while(i<=j){
+            long long mid=(i+j)/2;
+            if(mid*mid>num)
+                j=mid-1;
+            else if(mid*mid<num)
+                i=mid+1;
+            else
+            {
+                found=true;
+                break;
+            }
+        }
+        return found;
     }
 };
