@@ -2,20 +2,9 @@ class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
         
-    int n = heights.size(), i = 0, mxarea = INT_MIN;
-    vector<int> prevS(n), nextS(n), maxBreath(n), maxArea(n);
+    int n = heights.size(), i = n-1, mxarea = INT_MIN;
+    vector<int> maxBreath(n), maxArea(n);
     stack<int> st;
-    while (i < n)
-    {
-        while (st.size() != 0 && heights[st.top()] >= heights[i])
-            st.pop();
-        if (st.size() == 0)
-            prevS[i] = -1;
-        else
-            prevS[i] = st.top();
-        st.push(i++);
-    }
-    i--;
     while(st.size()>0)
         st.pop();
     while (i >= 0)
@@ -23,16 +12,21 @@ public:
         while (st.size() != 0 && heights[st.top()] >= heights[i])
             st.pop();
         if (st.size() == 0)
-            nextS[i] = n;
+            maxBreath[i] = n;
         else
-            nextS[i] = st.top();
+            maxBreath[i] = st.top();
         st.push(i--);
     }
-    i = 0;
+    i=0;
+    while(st.size()>0)
+        st.pop();
     while (i < n)
     {
-        maxBreath[i] = nextS[i] - prevS[i] - 1;
-        i++;
+        while (st.size() != 0 && heights[st.top()] >= heights[i])
+            st.pop();
+        if (st.size() != 0)
+            maxBreath[i] -= (st.top()+1);
+        st.push(i++);
     }
     i = 0;
     while (i < n)
