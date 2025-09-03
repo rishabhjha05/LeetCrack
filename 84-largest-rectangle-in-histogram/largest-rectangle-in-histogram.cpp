@@ -2,8 +2,8 @@ class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
         
-    int n = heights.size(), i = n-1, mxarea = INT_MIN;
-    vector<int> maxBreath(n), maxArea(n);
+    int n = heights.size(), i = n-1, maxArea = INT_MIN;
+    vector<int> maxBreath(n);
     stack<int> st;
     while(st.size()>0)
         st.pop();
@@ -31,9 +31,9 @@ public:
     i = 0;
     while (i < n)
     {
-        maxArea[i] = maxBreath[i] * heights[i];
-        mxarea = max(mxarea, maxArea[i++]);
+        maxArea = max(maxArea,maxBreath[i] * heights[i]);
+        i++;
     }
-    return mxarea;
+    return maxArea;
     }
 };
