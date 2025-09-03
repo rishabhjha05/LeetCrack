@@ -32,11 +32,8 @@ public:
     while (i < n)
     {
         maxArea[i] = maxBreath[i] * heights[i];
-        i++;
-    }
-    i = 0;
-    while (i < n)
         mxarea = max(mxarea, maxArea[i++]);
+    }
     return mxarea;
     }
 };
