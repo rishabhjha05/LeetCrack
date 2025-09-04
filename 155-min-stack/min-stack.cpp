@@ -3,34 +3,37 @@ public:
     MinStack() {
         
     }
-    stack<int> st;
+    stack<long long> st;
+    long long min=LLONG_MAX;
     void push(int val) {
-        st.push(val);
+        long long vl=(long long)val;
+        if(st.size()==0)
+        {
+            st.push(vl);
+            min=vl;
+        }
+        else if(val>=min)
+            st.push(vl);
+        else
+        {
+            st.push(2*vl-min);
+            min=vl;
+        }
     }
-    
     void pop() {
+        if(st.top()<min)
+            min=2*min-st.top();
         st.pop();
     }
     
     int top() {
-        return st.top();
+        if(st.top()<min)
+            return (int)min;
+        return (int)st.top();
     }
     
     int getMin() {
-        int min=INT_MAX;
-        stack<int> temp;
-        while(st.size()>0)
-        {
-            if(min>st.top())
-                min=st.top();
-            temp.push(st.top());
-            st.pop();
-        }
-        while(temp.size()>0){
-            st.push(temp.top());
-            temp.pop();
-        }
-        return min;
+        return (int)min;
     }
 };
 
