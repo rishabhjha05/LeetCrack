@@ -1,33 +1,29 @@
 class MinStack {
 public:
-    stack<int> st;
-    stack<int> min;
+    vector<int> st;
     MinStack() {
         
     }
     
     void push(int val) {
-        if(min.size()==0 || min.top()>=val)
-            min.push(val);
-        st.push(val);
-        cout<<"push\n";
+        st.push_back(val);
     }
     
     void pop() {
-        if(min.top()==st.top())
-            min.pop();
-        st.pop();
-        cout<<"pop\n";
+        st.pop_back();
     }
     
     int top() {
-        return st.top();
-        cout<<"top\n";
+        return st[st.size()-1];
     }
     
     int getMin() {
-        return min.top();
-        cout<<"getMin\n";
+        int min=INT_MAX;
+        for(int i=0;i<st.size();i++){
+            if(min>st[i])
+                min=st[i];
+        }
+        return min;
     }
 };
 
