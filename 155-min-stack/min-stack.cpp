@@ -7,9 +7,7 @@ public:
     }
     
     void push(int val) {
-        if(min.size()!=0 && min.top()>=val)
-            min.push(val);
-        else if(min.size()==0)
+        if(min.size()==0 || min.top()>=val)
             min.push(val);
         st.push(val);
         cout<<"push\n";
