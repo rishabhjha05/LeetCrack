@@ -8,9 +8,8 @@ public:
             long long setBits=0,copy=z;
             while(copy>0)
             {
-                if((copy&1)==1)
-                    setBits++;
-                copy>>=1;
+                copy = (copy&(copy-1));
+                setBits+=1;
             }
             if(i>=setBits && i<=z)
                 return i;
