@@ -1,7 +1,7 @@
 class Solution {
 public:
     int calPoints(vector<string>& operations) {
-        stack<int> st,sum;
+        stack<int> st;
         for(string str: operations){
             if(str=="+")
             {
@@ -10,29 +10,24 @@ public:
                 int b=st.top();
                 st.push(a);
                 st.push(a+b);
-                sum.push(sum.top()+a+b);
             }
             else if(str=="D"){
                 int a=2*st.top();
                 st.push(a);
-                sum.push(a+sum.top());
             }
-            else if(str=="C"){
+            else if(str=="C")
                 st.pop();
-                sum.pop();
-            }
             else
             {
                 int a=stoi(str);
                 st.push(a);
-                if(sum.size()==0)
-                    sum.push(a);
-                else
-                sum.push(sum.top()+a);
             }
         }
-        if(sum.size()!=0)
-            return sum.top();
-        return 0;
+        int sum=0;
+        while(st.size()!=0){
+            sum+=st.top();
+            st.pop();
+        }
+        return sum;
     }
 };
