@@ -40,7 +40,7 @@ public:
             temp2=temp2->next;
             temp=temp->next;
         }
-        if(carry!=0)
+        if(carry)
         {
             ListNode *node =new ListNode(carry);
             temp->next=node;
