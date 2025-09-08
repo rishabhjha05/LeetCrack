@@ -11,18 +11,13 @@ public:
         return false;
     }
     vector<int> getNoZeroIntegers(int n) {
-        vector<int> sol;
         for(int i=1;i<n;i++){
             if(!contain0(i))
             {
                 if(!contain0(n-i))
-                {
-                    sol.push_back(i);
-                    sol.push_back(n-i);
-                    break;
-                }
+                    return {i,n-i};
             }
         }
-        return sol;
+        return {0,0};
     }
 };
