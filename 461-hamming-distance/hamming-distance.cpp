@@ -10,7 +10,6 @@ public:
     }
     int hammingDistance(int x, int y) {
         int zor=x^y;
-        cout<<zor;
         return NoSetbit(zor);
     }
 };
