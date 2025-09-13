@@ -1,15 +1,11 @@
 class Solution {
 public:
-    int NoSetbit(int n){
-        int count=0;
-        while(n>0){
-            n=n&(n-1);
+    int hammingDistance(int x, int y) {
+        int zor=x^y,count=0;
+        while(zor>0){
+            zor=zor & (zor-1);
             count++;
         }
         return count;
-    }
-    int hammingDistance(int x, int y) {
-        int zor=x^y;
-        return NoSetbit(zor);
     }
 };
