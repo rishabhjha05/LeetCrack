@@ -33,10 +33,11 @@ int pairSum(ListNode *head)
         slow=slow->next;
     }
     ListNode *head2=slow->next,*t1=head,*t2;
+    slow->next=NULL;
     head2=rev(head2);
     t2=head2;
     int mx=INT_MIN;
-    while(t1&&t2){
+    while(t1){
         mx=max(mx,t1->val+t2->val);
         t1=t1->next;
         t2=t2->next;
