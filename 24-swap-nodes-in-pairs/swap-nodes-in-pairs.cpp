@@ -14,9 +14,8 @@ public:
     ListNode* temp=head;
     while(temp && temp->next){
         int tmp=temp->val;
-        ListNode *left=temp,*right=temp->next;
-        left->val=right->val;
-        right->val=tmp;
+        temp->val=temp->next->val;
+        temp->next->val=tmp;
         temp=temp->next->next;
     }
     return head;
