@@ -10,13 +10,30 @@
  */
 class Solution {
 public:
-    ListNode* swapPairs(ListNode* head) { 
-    ListNode* temp=head;
-    while(temp && temp->next){
-        int tmp=temp->val;
-        temp->val=temp->next->val;
-        temp->next->val=tmp;
-        temp=temp->next->next;
+    ListNode* swapPairs(ListNode* head) {
+        
+    ListNode *prev = head, *Next = head, *pp = NULL;
+    bool found = false;
+    while (Next)
+    {
+        if (Next)
+            Next = Next->next;
+        if (Next)
+        {
+            ListNode *Next2 = Next->next;
+            if (!found)
+                head = Next, found = true;
+            ListNode* temp=Next;
+            Next = prev;
+            prev = temp;
+            prev->next=Next;
+            Next->next=Next2;
+            if (pp)
+                pp->next = prev;
+            pp = Next;
+            prev = Next2;
+            Next = Next2;
+        }
     }
     return head;
     }
