@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool isHappy(int n) {
-        for(int i=0;i<100000;i++){
+        for(int i=0;i<1000;i++){
             int sum=0;
             while(n){
                 sum+=pow(n%10,2);
