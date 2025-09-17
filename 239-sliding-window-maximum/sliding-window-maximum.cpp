@@ -1,8 +1,8 @@
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-        
-    int n = nums.size(), i = n - 1;
+       
+    int n = nums.size(), i = n - 1,j=0;
     vector<int> NextGi(n), sol;
     stack<int> st;
     while (i >= 0)
@@ -16,17 +16,17 @@ public:
         st.push(i);
         i--;
     }
-    i=0;
+    i = 0;
     while (i <= n - k)
     {
-        int mx = nums[i], j = i;
-        while (true)
+        if(j<i)
+            j=i;
+        int mx = nums[j];
+        while (j<i+k)
         {
+            mx = nums[j];
             if (NextGi[j] < i + k)
-            {
-                mx = nums[NextGi[j]];
                 j = NextGi[j];
-            }
             else
                 break;
         }
