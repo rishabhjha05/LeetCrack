@@ -13,9 +13,6 @@ public:
                 NextG[i]=nextG.top();
             nextG.push(nums[i--]);
         }
-        for(int ele : NextG)
-            cout<<ele<<" ";
-        cout<<endl;
         i=0;
         while(i<n){
             if(NextG[i]!=INT_MIN)
