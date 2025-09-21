@@ -23,7 +23,6 @@ public:
             ch=letters[i++];
         if(letters[i-1]>target)
             return letters[i-1];
-        else 
-            return letters[0];
+        return letters[0];
     }
 };
