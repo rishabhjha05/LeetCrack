@@ -5,21 +5,12 @@ public:
         vector<int> del;
         for(int ele:nums)
             freq[ele]++;
-        int mx=-1,count=0,i=1,n=nums.size();
-        sort(nums.begin(),nums.end());
-        del.push_back(nums[0]);
-        while(i<n){
-            while(i<n && nums[i]==nums[i-1])
-                i++;
-            if(i<n)
-                del.push_back(nums[i++]);
-        }
-        
-        for(int ele:del)
+        int mx=-1,count=0;
+        for(int ele:nums)
             mx=max(mx,freq[ele]);
-        for(int ele:del)
+        for(int ele:nums)
             if(freq[ele]==mx)
                 count++;
-        return count*mx;
+        return count;
     }
 };
