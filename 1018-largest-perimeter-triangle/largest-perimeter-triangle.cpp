@@ -15,7 +15,6 @@ public:
             if(isValid)
                 return a+b+c;
             i++,j++;
-            cout<<"hi\n";
         }
         return 0;
     }
