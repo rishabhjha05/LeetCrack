@@ -1,7 +1,7 @@
 class Solution {
 public:
     int trailingZeroes(int n) {
-        long long noF=0;
+        int noF=0;
         for(int i=1;i<=n;i++)
         {
             int n=i;
