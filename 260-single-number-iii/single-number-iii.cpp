@@ -1,13 +1,14 @@
 class Solution {
 public:
     vector<int> singleNumber(vector<int>& nums) {
-        vector<int> ans;
-        unordered_map<int,int> freq;
+        int zor=0,mask=1,zor2=0;
         for(int ele : nums)
-            freq[ele]++;
-        for(auto i : freq)
-            if(i.second==1)
-                ans.push_back(i.first);
-        return ans;
+            zor^=ele;
+        while((mask&zor)==0)
+            mask<<=1;
+        for(int ele : nums)
+            if((mask&ele)!=0)
+                zor2^=ele;
+        return {zor^zor2,zor2};
     }
 };
