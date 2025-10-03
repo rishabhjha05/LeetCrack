@@ -9,8 +9,6 @@ public:
         if (height[i] > prev_max)
             prev_max = height[i];
     }
-    for(int ele : prev_greatest)
-        cout<<ele<<" ";
     for (int j = n - 2; j >= 0; j--)
     {
         if (max_next < prev_greatest[j])
