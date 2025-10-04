@@ -1,1 +1,1 @@
-<h2>count-equal-and-divisible-pairs-in-an-array Notes</h2><hr>[ Time taken: 1 d 5 hrs 6 m 52 s ]
+<h2>count-equal-and-divisible-pairs-in-an-array Notes</h2><hr>[ Time taken: 1 d 8 hrs 35 m 56 s ]
