@@ -43,14 +43,11 @@ public:
             if(NextG.size()==0)
                 idx[i]=-1;
             else
-                idx[i]=temp->val;
+                idx[i]=NextG.top();
             NextG.push(temp->val);
             temp=temp->next;
             i--;
         }
-        for(int ele: idx)
-            cout<<ele<<" ";
-        
         head=rev(head);
         ListNode *head2=new ListNode(-1);
         ListNode *temp2=head2;
