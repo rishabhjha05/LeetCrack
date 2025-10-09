@@ -38,17 +38,20 @@ public:
         return maxArea;
     }
     int maximalRectangle(vector<vector<char>>& matrix) {
-        int n=matrix.size(),m=matrix[0].size(),ans=0;
-        vector<int> height(m,0);
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(matrix[i][j]!='0')
-                    height[j]++;
-                else
-                    height[j]=0;
-            }
-            ans=max(ans,largestRectangleArea(height));
+        
+    int n = matrix.size(), m = matrix[0].size(), mx = 0;
+    vector<int> height(m, 0);
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (matrix[i][j] != '0')
+                height[j]++;
+            else
+                height[j] = 0;
         }
-        return ans;
+        mx = max(largestRectangleArea(height), mx);
+    }
+    return mx;
     }
 };
