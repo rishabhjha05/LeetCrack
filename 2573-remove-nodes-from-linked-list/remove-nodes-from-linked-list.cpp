@@ -24,44 +24,49 @@ public:
         curr->next=prev;
         return curr;
     }
+    int size(ListNode *head)
+{
+    ListNode *temp = head;
+    int size = 0;
+    while (temp)
+    {
+        size++;
+        temp = temp->next;
+    }
+    return size;
+}
     ListNode* removeNodes(ListNode* head) {
-        stack<int> NextG;
-        head=rev(head);
-        int size=0,i;
-        ListNode* temp=head;
-        while(temp){
-            temp=temp->next;
-            size++;
-        }
-        vector<int> idx(size);
-        i=size-1;
-        temp=head;
-        while(i>=0)
+        
+    head = rev(head);
+    stack<int> nextG;
+    ListNode *temp = head;
+    int len = size(head), i = len - 1;
+    vector<int> NextG(len);
+    while (i >= 0)
+    {
+        while (nextG.size()!=0 && nextG.top() <= temp->val)
+            nextG.pop();
+        if (nextG.size()!=0)
+            NextG[i] = nextG.top();
+        else
+            NextG[i] = -1;
+        nextG.push(temp->val);
+        temp = temp->next;
+        i--;
+    }
+    head = rev(head);
+    temp = head, i = 0;
+    ListNode *head2 = new ListNode(-1), *temp2 = head2;
+    while (temp)
+    {
+        if (NextG[i] == -1)
         {
-            while(NextG.size()!=0 && NextG.top()<=temp->val)
-                NextG.pop();
-            if(NextG.size()==0)
-                idx[i]=-1;
-            else
-                idx[i]=NextG.top();
-            NextG.push(temp->val);
-            temp=temp->next;
-            i--;
+            temp2->next = temp;
+            temp2 = temp;
         }
-        head=rev(head);
-        ListNode *head2=new ListNode(-1);
-        ListNode *temp2=head2;
-        i=0;
-        temp=head;
-        while(i<size){
-            if(idx[i]==-1){
-                temp2->next=temp;
-                temp2=temp2->next;
-            }
-            temp=temp->next;
-            i++;
-        }
-        temp2->next=NULL;
-        return head2->next;
+        temp = temp->next;
+        i++;
+    }
+    return head2->next;
     }
 };
