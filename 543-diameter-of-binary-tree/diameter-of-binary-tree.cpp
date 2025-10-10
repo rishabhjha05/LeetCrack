@@ -11,19 +11,22 @@
  */
 class Solution {
 public:
-    int ans=0;
     int level(TreeNode* root){
         if(root==NULL)
             return 0;
         return 1+max(level(root->left),level(root->right));
     }
-    int diameterOfBinaryTree(TreeNode* root) {
+    void sol(TreeNode* root,int &ans){
         if(root==NULL)
-            return 0;
+            return;
         int dia=level(root->left)+level(root->right);
         ans=max(ans,dia);
-        diameterOfBinaryTree(root->left);
-        diameterOfBinaryTree(root->right);
+        sol(root->left,ans);
+        sol(root->right,ans);
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+        int ans=0;
+        sol(root,ans);
         return ans;
     }
 };
