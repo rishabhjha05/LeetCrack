@@ -13,7 +13,7 @@ public:
                 j--;
             }
         }
-        i=0,j=nums.size()-1;
+        i=0,j=ans.size()-1;
         while(i<j){
             int temp=ans[i];
             ans[i++]=ans[j];
