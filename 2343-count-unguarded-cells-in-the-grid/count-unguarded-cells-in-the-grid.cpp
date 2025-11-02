@@ -7,11 +7,6 @@ public:
             block[vec[0]][vec[1]]=-1;
         for(vector<int> vec : walls)
             block[vec[0]][vec[1]]=1;
-        for(vector<int> vec : block){
-            for(int ele: vec)
-                cout<<ele<<" ";
-            cout<<endl;
-        }
         for(int i=0;i<m;i++)
         {
             for(int j=0;j<n;j++){
@@ -46,11 +41,5 @@ public:
                 if(block[i][j]==0)
                     count++;
         return count;
-        for(vector<int> vec : block){
-            for(int ele: vec)
-                cout<<ele<<" ";
-            cout<<endl;
-        }
-        return 0;
     }
 };
