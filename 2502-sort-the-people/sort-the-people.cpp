@@ -15,8 +15,6 @@ public:
             heights[idx]=-1;
             help[i]=idx;
         }
-        for(int ele : help)
-            cout<<ele<<" ";
         for(int i=0;i<n;i++)
             ans[i]=names[help[i]];
         return ans;
