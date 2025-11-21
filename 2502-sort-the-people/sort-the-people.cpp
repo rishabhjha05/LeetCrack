@@ -1,22 +1,17 @@
 class Solution {
 public:
-    vector<string> sortPeople(vector<string>& names, vector<int>& heights) {
-        int n=names.size();
-        vector<int> help(n);
-        vector<string> ans(n);
-        for(int i=0;i<n;i++){
-            int max=-1,idx=-1;
-            for(int j=0;j<n;j++)
-                if(max<heights[j])
-                {
-                    max=heights[j];
-                    idx=j;
+    vector<string> sortPeople(vector<string>& names, vector<int>& heights){
+        int n = heights.size();
+        for (int i = 0; i < n - 1; i++){
+            int maxIdx =i;
+            for (int j = i + 1; j < n; j++){
+                if (heights[j] > heights[maxIdx]){
+                    maxIdx = j;
                 }
-            heights[idx]=-1;
-            help[i]=idx;
+            }
+            swap(names[i], names[maxIdx]);
+            swap(heights[i],heights[maxIdx]);
         }
-        for(int i=0;i<n;i++)
-            ans[i]=names[help[i]];
-        return ans;
+        return names;
     }
 };
