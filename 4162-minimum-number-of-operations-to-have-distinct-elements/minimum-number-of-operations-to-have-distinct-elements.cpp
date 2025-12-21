@@ -1,30 +1,25 @@
 class Solution {
 public:
     int minOperations(vector<int>& nums) {
-        unordered_map<int,int> freq;
-        for(int ele : nums)
-            freq[ele]++;
-        int i=0,n=nums.size(),count=0,ans=0;
-        while(i<=n-3){
-            bool flag=false;
-            for(int j=i;j<i+3;j++)
-                if(freq[nums[j]]>1)
-                    flag=true;
-            count++;
-            if(flag){
-            freq[nums[i]]--;
-            freq[nums[i+1]]--;
-            freq[nums[i+2]]--;
-            ans=count;
-            }
-            i+=3;
+        unordered_map<int, int> mp;
+        for (int x : nums) {
+            mp[x]++;
         }
-        bool flag=false;
-        while(i<n)
-            if(freq[nums[i++]]>1)
-                flag=true;
-        if(flag)
-            ans=count+1;
-        return ans;
+
+        int idx = -1;
+        for (int i = 0; i < nums.size(); i++) {
+            if (mp.count(nums[i]) && mp[nums[i]] >= 2) {
+                mp[nums[i]]--;
+                if (mp[nums[i]] == 0) {
+                    mp.erase(nums[i]);
+                }
+                idx = i;
+            }
+        }
+
+        if (idx == -1) return 0;
+
+        int cnt = idx + 1;
+        return (cnt + 2) / 3;  
     }
 };
