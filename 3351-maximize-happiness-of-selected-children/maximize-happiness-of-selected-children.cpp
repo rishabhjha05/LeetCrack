@@ -10,12 +10,6 @@ public:
             sum+=happiness[j];
             j--;
         }  
-        // for(j;j>=0;j--){
-        //     happiness[j]-=k;
-        //     if(happiness[j]<0)
-        //         happiness[j]=0;
-        //     sum+=happiness[j];
-        // }
         return sum;
     }
 };
