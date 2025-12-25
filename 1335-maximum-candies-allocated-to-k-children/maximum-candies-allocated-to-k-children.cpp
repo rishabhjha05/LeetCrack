@@ -13,13 +13,12 @@ public:
             long long mid=(low+high)/2,count=0;
             for(int ele : candies){
                 count+=ele/mid;
+            }
                 if(count>=k){
                     ans=mid;
                     low=mid+1;
-                    break;
                 }
-            }
-            if(count<k)
+            else
                 high=mid-1;
         }        
         return ans;
