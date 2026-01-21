@@ -16,10 +16,8 @@ public:
                 int n=nums[i],m=nums[j]%10;
                 while(n/10!=0)
                     n/=10;
-                if(gcd(n,m)){
+                if(gcd(n,m))
                     count++;
-                    cout<<n<<" "<<m<<"\n";
-                }
             }
         }
         return count;
