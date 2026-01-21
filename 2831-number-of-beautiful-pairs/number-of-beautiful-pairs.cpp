@@ -10,12 +10,13 @@ public:
         return 1;
     }
     int countBeautifulPairs(vector<int>& nums) {
-        int n=nums.size(),count=0;
-        for(int i=0;i<n-1;i++){
-            for(int j=i+1;j<n;j++){  
-                int n=nums[i],m=nums[j]%10;
-                while(n/10!=0)
-                    n/=10;
+        int s=nums.size(),count=0;
+        for(int i=0;i<s-1;i++){
+            int n=nums[i];
+            while(n/10!=0)
+                n/=10;
+            for(int j=i+1;j<s;j++){  
+                int m=nums[j]%10;
                 if(gcd(n,m))
                     count++;
             }
