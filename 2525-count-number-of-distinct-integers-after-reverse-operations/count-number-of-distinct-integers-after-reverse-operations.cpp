@@ -10,21 +10,16 @@ public:
         return r;
     }
     int countDistinctIntegers(vector<int>& nums) {
-        vector<int> vec;
-        int i=0,n=nums.size();
-        while(i<n)
-            vec.push_back(nums[i++]);
-        i=0;
-        while(i<n)
-            vec.push_back(rev(nums[i++]));
-        for(int ele : vec)
-            cout<<ele<<" ";
-        int count=0;
+        int i=0,n=nums.size(),count=0;
         unordered_map<int,int> freq;
-        for(int ele : vec){
+        for(int ele : nums){
+            int r=rev(ele);
             if(freq[ele]<=0)
                 count++;
             freq[ele]++;
+            if(freq[r]<=0)
+                count++;
+            freq[r]++;
         }
         return count;
     }
