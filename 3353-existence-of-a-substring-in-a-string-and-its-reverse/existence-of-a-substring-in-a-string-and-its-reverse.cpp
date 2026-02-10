@@ -10,15 +10,14 @@ public:
             freq[str]++;
             i++,j++;
         }
-        reverse(s.begin(),s.end());
-        i=0,j=1;
-        while(j<n){
+        i=n-1,j=i-1;
+        while(j>=0){
             string str="";
             str+=s[i];
             str+=s[j];
             if(freq[str]>=1)
                 return 1;
-            i++,j++;
+            i--,j--;
         }
         return 0;
     }
