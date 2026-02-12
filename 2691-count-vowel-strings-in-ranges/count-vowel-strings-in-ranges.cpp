@@ -17,9 +17,9 @@ public:
         int p=0;
         for(int ele : check)
             pre.push_back(p),p+=ele;
-        for(vector<int> vec: queries){
-            int count=pre[vec[1]]-pre[vec[0]];
-            count+=check[vec[1]];
+        for(int i=0;i<n;i++){
+            int count=pre[queries[i][1]]-pre[queries[i][0]];
+            count+=check[queries[i][1]];
             ans.push_back(count);
         }
         return ans;
