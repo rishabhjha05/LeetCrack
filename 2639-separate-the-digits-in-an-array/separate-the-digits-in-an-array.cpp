@@ -1,7 +1,6 @@
 class Solution {
 public:
     int num(char ch){
-        
         return ch-'0';
     }
     vector<int> separateDigits(vector<int>& nums) {
