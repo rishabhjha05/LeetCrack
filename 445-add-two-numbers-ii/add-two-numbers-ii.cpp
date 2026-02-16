@@ -10,39 +10,51 @@
  */
 class Solution {
 public:
+    ListNode* rev(ListNode* head){
+        if(!head || !(head->next))
+            return head;
+        ListNode* prev=head,*curr=head->next,*Next=curr->next;
+        while(Next){
+            curr->next=prev;
+            prev=curr;
+            curr=Next;
+            Next=Next->next;
+        }
+        curr->next=prev;
+        head->next=NULL;
+        return curr;
+    }
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        vector<int> n1,n2,sum;
-        ListNode* t1=l1,*t2=l2;
-        while(t1)
-            n1.push_back(t1->val),t1=t1->next;
-        while(t2)
-            n2.push_back(t2->val),t2=t2->next;
-        int n=n1.size(),m=n2.size(),i=n-1,j=m-1,carry=0;
-        while(i>=0 && j>=0){
-            int s=n1[i--]+n2[j--]+carry;
-            sum.push_back(s%10);
-            carry=s/10;
-        }
-        while(i>=0){
-            int s=n1[i--]+carry;
-            sum.push_back(s%10);
-            carry=s/10;
-        }
-        while(j>=0){
-            int s=n2[j--]+carry;
-            sum.push_back(s%10);
-            carry=s/10;
-        }
-        if(carry!=0)
-            sum.push_back(carry);
-        i=sum.size()-1;
+        l1=rev(l1);
+        l2=rev(l2);
         ListNode* head=new ListNode(-1);
         ListNode* temp=head;
-        while(i>=0){
-            ListNode *node=new ListNode(sum[i--]);
+        int s=0,carry=0;
+        while(l1 && l2){
+            s=l1->val+l2->val+carry;
+            carry=s/10;
+            ListNode* node=new ListNode(s%10);
             temp->next=node;
-            temp=temp->next;
+            temp=temp->next,l1=l1->next,l2=l2->next;
         }
-        return head->next;
+        while(l1){
+            s=l1->val+carry;
+            carry=s/10;
+            ListNode* node=new ListNode(s%10);
+            temp->next=node;
+            temp=temp->next,l1=l1->next;
+        }
+        while(l2){
+            s=l2->val+carry;
+            carry=s/10;
+            ListNode* node=new ListNode(s%10);
+            temp->next=node;
+            temp=temp->next,l2=l2->next;
+        }
+        if(carry!=0){
+            ListNode* node=new ListNode(carry);
+            temp->next=node;
+        }
+        return rev(head->next);
     }
 };
