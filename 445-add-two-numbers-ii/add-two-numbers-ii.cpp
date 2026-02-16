@@ -25,31 +25,35 @@ public:
         return curr;
     }
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        l1=rev(l1);
-        l2=rev(l2);
+       stack<int> st1,st2;
+        while(l1)
+            st1.push(l1->val),l1=l1->next;
+        while(l2)
+            st2.push(l2->val),l2=l2->next;
         ListNode* head=new ListNode(-1);
         ListNode* temp=head;
         int s=0,carry=0;
-        while(l1 && l2){
-            s=l1->val+l2->val+carry;
+        while(st1.size() && st2.size()){
+            s=st1.top()+st2.top()+carry;
             carry=s/10;
             ListNode* node=new ListNode(s%10);
             temp->next=node;
-            temp=temp->next,l1=l1->next,l2=l2->next;
+            temp=temp->next;
+            st1.pop(),st2.pop();
         }
-        while(l1){
-            s=l1->val+carry;
+        while(st1.size()){
+            s=st1.top()+carry;
             carry=s/10;
             ListNode* node=new ListNode(s%10);
             temp->next=node;
-            temp=temp->next,l1=l1->next;
+            temp=temp->next,st1.pop();
         }
-        while(l2){
-            s=l2->val+carry;
+        while(st2.size()){
+            s=st2.top()+carry;
             carry=s/10;
             ListNode* node=new ListNode(s%10);
             temp->next=node;
-            temp=temp->next,l2=l2->next;
+            temp=temp->next,st2.pop();
         }
         if(carry!=0){
             ListNode* node=new ListNode(carry);
