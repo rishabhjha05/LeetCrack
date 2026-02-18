@@ -5,13 +5,9 @@ public:
             return 1;
         int count=0,ans=0;
         while(n){
-            cout<<"Before : "<<n;
-            n=n>>1,count++;
-            cout<<"After : "<<n<<endl;
+            n=n>>1;
+            ans+=pow(2,count++);
         }
-        cout<<count;
-        while(count>=0)
-            ans+=pow(2,--count);
         return ans;
     }
 };
