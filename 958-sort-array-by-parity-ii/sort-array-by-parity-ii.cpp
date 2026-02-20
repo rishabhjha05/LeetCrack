@@ -2,14 +2,18 @@ class Solution {
 public:
     vector<int> sortArrayByParityII(vector<int>& nums) {
         int n=nums.size(),i=0,j=1;
-        vector<int> ans(n);
-        sort(nums.begin(),nums.end());
-        for(int ele : nums){
-            if(ele%2==0)
-                ans[i]=ele,i+=2;
+        while(i<n && j<n){
+            if(nums[i]%2!=0 && nums[j]%2==0){
+                int temp=nums[i];
+                nums[i]=nums[j];
+                nums[j]=temp;
+                i+=2,j+=2;
+            }
+            else if(nums[i]%2==0)
+                i+=2;
             else
-                ans[j]=ele,j+=2;
+                j+=2;
         }
-        return ans;
+        return nums;
     }
 };
