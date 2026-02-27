@@ -25,8 +25,6 @@ public:
             if(node->left)
                 st.push(node->left);
         }
-        for(int ele : preO)
-            cout<<ele<<" ";
         TreeNode* temp=root;
         int n=preO.size();
         for(int i=1;i<n;i++){
