@@ -15,23 +15,20 @@ public:
         stack<TreeNode*> st;
         if(root)
             st.push(root);
-        vector<int> preO;
+        vector<TreeNode*> preO;
         while(!st.empty()){
             TreeNode* node=st.top();
             st.pop();
-            preO.push_back(node->val);
+            preO.push_back(node);
             if(node->right)
                 st.push(node->right);
             if(node->left)
                 st.push(node->left);
         }
-        TreeNode* temp=root;
         int n=preO.size();
-        for(int i=1;i<n;i++){
-            TreeNode* node=new TreeNode(preO[i]);
-            temp->right=node;
-            temp->left=NULL;
-            temp=temp->right;
+        for(int i=0;i<n-1;i++){
+            preO[i]->right=preO[i+1];
+            preO[i]->left=NULL;
         }
     }
 };
