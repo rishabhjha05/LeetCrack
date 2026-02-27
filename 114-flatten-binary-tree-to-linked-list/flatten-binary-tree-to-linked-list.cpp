@@ -12,23 +12,15 @@
 class Solution {
 public:
     void flatten(TreeNode* root) {
-        stack<TreeNode*> st;
-        if(root)
-            st.push(root);
-        vector<TreeNode*> preO;
-        while(!st.empty()){
-            TreeNode* node=st.top();
-            st.pop();
-            preO.push_back(node);
-            if(node->right)
-                st.push(node->right);
-            if(node->left)
-                st.push(node->left);
-        }
-        int n=preO.size();
-        for(int i=0;i<n-1;i++){
-            preO[i]->right=preO[i+1];
-            preO[i]->left=NULL;
-        }
+        if(!root)
+            return;
+        TreeNode* left=root->left,*right=root->right;
+        root->left=NULL;
+        flatten(left);
+        flatten(right);
+        root->right=left;
+        while(root->right)
+            root=root->right;
+        root->right=right;
     }
 };
