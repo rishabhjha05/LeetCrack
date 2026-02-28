@@ -10,17 +10,11 @@ public:
         return r;
     }
     int countDistinctIntegers(vector<int>& nums) {
-        int i=0,n=nums.size(),count=0;
-        unordered_map<int,int> freq;
+        unordered_set<int> s;
         for(int ele : nums){
-            int r=rev(ele);
-            if(freq[ele]<=0)
-                count++;
-            freq[ele]++;
-            if(freq[r]<=0)
-                count++;
-            freq[r]++;
+            s.insert(ele);
+            s.insert(rev(ele));
         }
-        return count;
+        return s.size();
     }
 };
