@@ -4,14 +4,13 @@ public:
         unordered_map<char,int> freq;
         for(char ch: s)
             freq[ch]++;
-        int count=0;
         for(char ch: t){
             if(freq[ch]==0)
                 return 0;
             freq[ch]--;
             if(freq[ch]==0)
-                count++;
+                freq.erase(ch);
         }
-        return freq.size()==count;
+        return freq.size()==0;
     }
 };
