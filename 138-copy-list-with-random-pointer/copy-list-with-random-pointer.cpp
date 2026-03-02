@@ -29,22 +29,35 @@ public:
         temp2->next=NULL;
         head2=head2->next;
         temp=head,temp2=head2;
-        while(temp && temp2){
-            vec1.push_back(temp);
-            vec2.push_back(temp2);
+        Node* d=head;
+        while(temp){
             temp=temp->next;
+            d->next=temp2;
+            d=d->next;
             temp2=temp2->next;
+            d->next=temp;
+            d=d->next;
+
         }
-        vec1.push_back(NULL);
-        vec2.push_back(NULL);
+        temp=head,temp2=head2;
+        while(temp){
+            if(temp->random)
+                temp2->random=temp->random->next;
+            temp=temp->next->next;
+            if(temp2->next)
+                temp2=temp2->next->next;
+        }
         temp=head,temp2=head2;
         while(temp && temp2){
-            int i=0;
-            while(i<vec1.size() && vec1[i]!=temp->random)
-                i++;
-            temp2->random=vec2[i];
+            cout<<"hi";
+            temp->next=temp2->next;
             temp=temp->next;
+            if(temp)
+                temp2->next=temp->next;
+            else
+                temp2->next=NULL;
             temp2=temp2->next;
+
         }
         return head2;
     }
