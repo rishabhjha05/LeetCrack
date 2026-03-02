@@ -29,35 +29,18 @@ public:
         temp2->next=NULL;
         head2=head2->next;
         temp=head,temp2=head2;
-        Node* d=head;
+        unordered_map<Node*,Node*> map;
         while(temp){
+            map[temp]=temp2;
             temp=temp->next;
-            d->next=temp2;
-            d=d->next;
             temp2=temp2->next;
-            d->next=temp;
-            d=d->next;
-
         }
         temp=head,temp2=head2;
         while(temp){
-            if(temp->random)
-                temp2->random=temp->random->next;
-            temp=temp->next->next;
-            if(temp2->next)
-                temp2=temp2->next->next;
-        }
-        temp=head,temp2=head2;
-        while(temp && temp2){
-            cout<<"hi";
-            temp->next=temp2->next;
+            if(map.find(temp->random)!=map.end())
+                temp2->random=map[temp->random];
             temp=temp->next;
-            if(temp)
-                temp2->next=temp->next;
-            else
-                temp2->next=NULL;
             temp2=temp2->next;
-
         }
         return head2;
     }
