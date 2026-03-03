@@ -23,16 +23,13 @@ public:
         vector<int> value;
         for(char ch: s)
             value.push_back(val(ch));
-        int i=0,j=1,n=value.size(),ans=0;
-        while(i<n || j<n){
-            if(j<n && value[i]<value[j]){
-                ans+=value[j]-value[i];
-                i+=2,j+=2;
-            }
-            else{
+        int n=value.size(),i=n-1,prev=INT_MIN,ans=0;
+        while(i>=0){
+            if(value[i]>=prev)
                 ans+=value[i];
-                i++,j++;
-            }
+            else
+                ans-=value[i];
+            prev=value[i--];
         }
         return ans;
 
