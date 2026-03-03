@@ -4,14 +4,15 @@ public:
         map<int,int> freq;
         for(int ele : nums)
             freq[ele]++;
-        vector<vector<int>> vec;
-        for(auto it: freq)
-            vec.push_back({it.second,it.first});
-        sort(vec.begin(),vec.end());
+        priority_queue< pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+        for(auto it: freq){
+            pq.push({it.second,it.first});
+            if(pq.size()>k)
+                pq.pop();
+        }
         vector<int> ans;
-        int i=vec.size()-1;
-        while(ans.size()<k)
-            ans.push_back(vec[i--][1]);
+        while(pq.size()!=0)
+            ans.push_back(pq.top().second),pq.pop();
         return ans;
     }
 };
