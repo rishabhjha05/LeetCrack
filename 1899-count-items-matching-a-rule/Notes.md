@@ -1,0 +1,1 @@
+<h2>count-items-matching-a-rule Notes</h2><hr>[ Time taken: 1d 3hrs 44m 32s ]
