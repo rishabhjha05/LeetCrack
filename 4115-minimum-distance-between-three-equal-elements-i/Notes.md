@@ -1,1 +1,1 @@
-<h2>minimum-distance-between-three-equal-elements-i Notes</h2><hr>[ Time taken: 1d 2hrs 23m 17s ]
+<h2>minimum-distance-between-three-equal-elements-i Notes</h2><hr>[ Time taken: 22hrs 22m 6s ]
