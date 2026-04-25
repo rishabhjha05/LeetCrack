@@ -2,12 +2,11 @@ class Solution {
 public:
     vector<long long> distance(vector<int>& nums) {
         int n=nums.size();
-        map<int,vector<int>> idx;
+        unordered_map<int,vector<int>> idx;
         vector<long long> ans(n,0);
         for(int i=0;i<n;i++)
             idx[nums[i]].push_back(i);
         for(auto itr: idx){
-
             if(itr.second.size()>1){
                 long long m=itr.second.size(),sum=0;
                 vector<long long> pre,suff(n); 
