@@ -16,11 +16,6 @@ public:
                 sum=0;
                 for(auto i=m;i-->0;)
                     suff[i]=sum,sum+=itr.second[i];
-                // for(auto i: pre)
-                //     cout<<i<<" ";
-                // cout<<endl;
-                // for(auto i: suff)
-                //     cout<<i<<" ";
                 for(int i=0;i<m;i++){
                     int ele=itr.second[i];
                     ans[itr.second[i]]=(1LL*i*ele-pre[i])+(suff[i]-(m-i-1)*ele*1LL);
