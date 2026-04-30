@@ -2,7 +2,6 @@ class Solution {
 public:
     int minOperations(vector<vector<int>>& grid, int x) {
         vector<int> vec;
-        int f=max(grid[0][0],x)%min(grid[0][0],x);
         for(vector<int> v: grid){
             for(int ele : v)
                 vec.push_back(ele);
