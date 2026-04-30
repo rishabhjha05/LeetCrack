@@ -36,8 +36,6 @@ public:
                 vec.push_back(ele);
         }
         int ans=0,n=vec.size(),y=quickS(vec,0,n-1,n/2);
-        sort(vec.begin(),vec.end());
-        cout<<y<<vec[n/2];
         for(vector<int> v: grid){
             for(int ele : v){
                 if(abs(y-ele)%x!=0)
