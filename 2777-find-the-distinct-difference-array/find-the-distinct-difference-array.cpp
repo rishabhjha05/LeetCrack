@@ -3,7 +3,7 @@ public:
     vector<int> distinctDifferenceArray(vector<int>& nums) {
         int count=0,n=nums.size();
         unordered_map<int,int> f1,f2;
-        vector<int> pre,suff(n),ans;
+        vector<int> pre;
         for(int ele : nums){
             if(f1[ele]==0)
                 count++;
