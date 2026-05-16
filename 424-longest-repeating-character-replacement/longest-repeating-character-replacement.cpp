@@ -7,11 +7,9 @@ public:
         while(j<n){
             int winSize=j-i+1;
             if((winSize-mx)<=k)
-                j++,freq[s[j]]++,ans=max(ans,winSize),mxP=mx,mx=max(mx,freq[s[j]]);
-            else{
-                mx=max(mx-1,mxP);
+                j++,freq[s[j]]++,ans=max(ans,winSize),mx=max(mx,freq[s[j]]);
+            else
                 freq[s[i]]--,i++;
-            }
         }
         return ans;
     }
