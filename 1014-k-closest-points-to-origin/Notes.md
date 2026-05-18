@@ -1,1 +1,1 @@
-<h2>k-closest-points-to-origin Notes</h2><hr>[ Time taken: 13hrs 4m 40s ]
+<h2>k-closest-points-to-origin Notes</h2><hr>[ Time taken: 1d 3hrs 27m 52s ]
