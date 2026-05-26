@@ -1,1 +1,1 @@
-<h2>partition-array-into-three-parts-with-equal-sum Notes</h2><hr>[ Time taken: 2hrs 42m 47s ]
+<h2>partition-array-into-three-parts-with-equal-sum Notes</h2><hr>[ Time taken: 23hrs 27m 2s ]
