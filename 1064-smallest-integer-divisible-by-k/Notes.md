@@ -1,1 +1,1 @@
-<h2>smallest-integer-divisible-by-k Notes</h2><hr>[ Time taken: 18hrs 45m 16s ]
+<h2>smallest-integer-divisible-by-k Notes</h2><hr>[ Time taken: 18hrs 32m 17s ]
