@@ -18,10 +18,7 @@ public:
             return root->val;
         else if(!root->left && !root->right)
             return 0;
-        int sum=0;
-        sum+=sol(root->left,'L');
-        sum+=sol(root->right,'R');
-        return sum;
+        return sol(root->left,'L')+sol(root->right,'R');
     }
     int sumOfLeftLeaves(TreeNode* root) {
         return sol(root,'R');
