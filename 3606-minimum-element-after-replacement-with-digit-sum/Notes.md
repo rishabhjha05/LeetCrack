@@ -1,1 +1,1 @@
-<h2>minimum-element-after-replacement-with-digit-sum Notes</h2><hr>[ Time taken: 20hrs 35m 29s ]
+<h2>minimum-element-after-replacement-with-digit-sum Notes</h2><hr>[ Time taken: 1d 13hrs 35m 41s ]
