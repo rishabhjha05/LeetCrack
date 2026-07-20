@@ -1,17 +1,16 @@
 class Solution {
 public:
     string rearrangeString(string s, char x, char y) {
-        unordered_map<char,int> freq;
-        for(char ch: s)
-            freq[ch]++;
-        s="";
-        for(int i=0;i<freq[y];i++)
-            s.push_back(y);
-        for(auto itr: freq){
-            if(itr.first!=y){
-                for(int i=0;i<itr.second;i++)
-                    s.push_back(itr.first);
-            }
+        int i=0,j=s.size()-1;
+        while(i<j){
+            if(s[i]==x && s[j]==y)
+                s[i++]=y,s[j--]=x;
+            else if(s[i]==x)
+                j--;
+            else if(s[j]==y)
+                i++;
+            else
+                i++,j--;
         }
         return s;
     }
