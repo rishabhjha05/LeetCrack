@@ -4,7 +4,6 @@ public:
         vector<int> ans;
         int i=0,j=0,n=mat.size(),m=mat[0].size();
         while(ans.size()<(n*m)){
-            cout<<"i : "<<i<<"  j : "<<j<<endl;
             while(i>=0 && j<m)
                 ans.push_back(mat[i--][j++]);
             if(i<0 && j==m)
@@ -15,7 +14,6 @@ public:
                 j=m-1,i+=2;
             if(ans.size()==(n*m))
                 break;
-            cout<<"i : "<<i<<"  j : "<<j<<endl;
             while(i<n && j>=0)
                 ans.push_back(mat[i++][j--]); 
             if(i==n && j<0)
