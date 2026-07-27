@@ -1,1 +1,1 @@
-<h2>maximum-product-of-two-elements-in-an-array Notes</h2><hr>[ Time taken: 1hr 35m 11s ]
+<h2>maximum-product-of-two-elements-in-an-array Notes</h2><hr>[ Time taken: 5hrs 30m 56s ]
