@@ -12,8 +12,6 @@ public:
         for(auto itr: freq){
             if(freq[itr.first]!=freq[(k-itr.first)%k] || (itr.first==k-itr.first && freq[itr.first]%2!=0))
                 return false;
-            else 
-                freq[itr.first]=0,freq[(k-itr.first)%k]=0;
         }
 
         return true;
