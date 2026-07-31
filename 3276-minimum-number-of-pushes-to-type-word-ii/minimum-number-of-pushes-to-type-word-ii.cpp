@@ -7,8 +7,6 @@ public:
             freq[ch]++;
         for(auto itr: freq)
             pq.push(itr.second);
-        // for(auto itr:freq)
-        //     cout<<itr.first<<" : "<<itr.second<<endl;
         long long count=1,m=1,ans=0;
         while(!pq.empty()){
             if(count==9)
