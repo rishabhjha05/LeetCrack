@@ -1,17 +1,18 @@
 class Solution {
 public:
     vector<int> findMissingElements(vector<int>& nums) {
+        int mn=INT_MAX,mx=INT_MIN;
         vector<int> ans;
-        unordered_map<int,int> freq;
-        int s=INT_MAX,l=INT_MIN;
+        unordered_map<int,bool> isPresent;
         for(int ele : nums){
-            s=min(ele,s);
-            l=max(ele,l);
-            freq[ele]++;
+            mx=max(mx,ele);
+            mn=min(mn,ele);
+            isPresent[ele]=true;
         }
-        for(int i=s;i<=l;i++)
-            if(freq[i]==0)
+        for(int i=mn+1;i<mx;i++){
+            if(!isPresent[i])
                 ans.push_back(i);
+        }
         return ans;
     }
 };
