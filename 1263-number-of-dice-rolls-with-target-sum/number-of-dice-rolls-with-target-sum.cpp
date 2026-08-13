@@ -10,7 +10,7 @@ public:
         else if(dp[n][target]!=-1)
             return dp[n][target];
         int way=0;
-        for(int i=1;i<=k;i++){
+        for(int i=1;i<=k&& i<=target;i++){
             way+=find(n-1,k,target-i)%mod;
             way%=mod;
         }
