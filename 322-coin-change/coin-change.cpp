@@ -10,9 +10,11 @@ public:
             return dp[amt];
         int mn=INT_MAX;
         for(int ele : coins){
-            int coin=find(coins,amt-ele);
-            if(coin!=-1)
-                mn=min(mn,1+coin);
+            if(ele<=amt){ 
+                int coin=find(coins,amt-ele);
+                if(coin!=-1)
+                    mn=min(mn,1+coin);
+            }
         }
         if(mn==INT_MAX) 
             dp[amt]=-1;
