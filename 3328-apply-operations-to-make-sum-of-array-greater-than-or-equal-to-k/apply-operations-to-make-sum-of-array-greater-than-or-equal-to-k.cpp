@@ -2,8 +2,8 @@ class Solution {
 public:
     int dup(int sum,int reqsum){
         if(reqsum%sum==0)
-            return reqsum/sum;
-        return reqsum/sum+1;
+            return reqsum/sum-1;
+        return reqsum/sum;
     }
     int minOperations(int k) {
         int ans=INT_MAX;
@@ -12,6 +12,6 @@ public:
             ans=min(ans,reqOps);
         }
 
-        return ans-1;
+        return ans;
     }
 };
